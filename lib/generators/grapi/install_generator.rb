@@ -6,10 +6,14 @@ module Grapi
 
       source_root File.expand_path("../../templates", __FILE__)
 
+      def app_name
+        Rails.application.config.session_options[:key].sub(/^_/,'').sub(/_session/,'')
+      end
+
       def copy_initializer
         template "grapi.rb", "config/initializers/grapi.rb"
       end
-      
+
     end
   end
 end
