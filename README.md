@@ -16,6 +16,12 @@ Or install it yourself as:
 
     $ gem install grapi
 
+After the gem has been installed just do:
+
+    $ rails g grapi:install
+
+This will create the basic directory structure and initializer file for you to configure to your needs.
+
 ## Usage
 
 TODO: Write usage instructions here
