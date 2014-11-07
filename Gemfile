@@ -11,3 +11,4 @@ gemspec
 # your gem to rubygems.org.
 
 gem 'jazz_hands', github: 'jkrmr/jazz_hands', branch: 'byebug_and_updated_pry'
+gem 'grape', '0.8.0'
