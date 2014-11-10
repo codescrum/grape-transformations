@@ -17,6 +17,7 @@
 
 require 'grapi'
 require 'pry'
+require File.expand_path("../test_app/config/environment", __FILE__)
 
 RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate

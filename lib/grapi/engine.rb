@@ -1,4 +1,5 @@
 # Rails Engine
+
 module Grapi
   class Engine < ::Rails::Engine
 

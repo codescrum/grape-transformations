@@ -1,7 +1,8 @@
 require 'grapi/version'
-require 'grape'
 require 'grapi/loader'
 require 'grapi/engine' if defined?(Rails)
+require 'grape'
+require 'rails'
 
 module Grapi
   # Sets default api location ../app/api
@@ -91,6 +92,7 @@ module Grapi
     options[:with] = entity.constantize if options[:with].nil? && entity
     present_without_autoload instance, options
   end
+
   ::Grape::Endpoint.alias_method_chain(:present, :autoload)
 
 end
