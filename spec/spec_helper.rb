@@ -24,6 +24,12 @@ require 'rspec/rails'
 require 'ammeter/init'
 
 RSpec.configure do |config|
+
+  config.after(:suite) do
+    # Removes the tests directory used for generators testing
+    FileUtils.rm_rf "/Users/jpamaya/code/codescrum/projects/grapi_all/grapi/tmp/tests"
+  end
+  
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
   # assertions if you prefer.
