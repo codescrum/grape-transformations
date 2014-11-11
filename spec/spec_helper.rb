@@ -15,9 +15,13 @@
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 
+require File.expand_path("../test_app/config/environment", __FILE__)
+
 require 'grapi'
 require 'pry'
-require File.expand_path("../test_app/config/environment", __FILE__)
+require 'rails/all'
+require 'rspec/rails'
+require 'ammeter/init'
 
 RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate

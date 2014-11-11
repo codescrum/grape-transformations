@@ -15,10 +15,7 @@ module Grapi
       end
 
       def generate_layout
-        file_path = "#{Rails.root}/app/api/#{app_name}/entities/.keep"
-        dir = File.dirname(file_path)
-        FileUtils.mkdir_p(dir) unless File.directory?(dir)
-        create_file file_path
+        create_file "app/api/#{app_name}/entities/.keep"
       end
 
     end
