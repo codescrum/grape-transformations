@@ -13,6 +13,10 @@ require "grapi"
 
 module TestApp
   class Application < Rails::Application
+
+    # Auto-load API and its subdirectories
+    config.paths.add File.join('app', 'api'), :glob => File.join('**', '*.rb')
+    config.autoload_paths = Dir[File.join(Rails.root, 'app', 'api', '*')]
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
