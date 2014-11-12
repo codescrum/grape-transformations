@@ -28,6 +28,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'rspec'
   spec.add_development_dependency 'ammeter'
   spec.add_development_dependency 'sqlite3'
+  spec.add_development_dependency 'virtus'
 
   spec.add_runtime_dependency 'railties'
   spec.add_runtime_dependency 'rspec-rails'
@@ -35,6 +36,7 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency 'pry-byebug'
 
   spec.add_dependency 'grape', '0.8.0'
+  spec.add_dependency 'grape-entity', '0.4.2'
   
   
 end
