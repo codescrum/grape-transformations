@@ -8,11 +8,7 @@ module Grapi
     # @param [String], full class name
     # @return [Object]
     def self.class_by_name(name)
-      begin
-        Object.const_get(name)
-      rescue NameError
-        nil
-      end
+      name.safe_constantize
     end
 
     # Loads all valid entities located in relative_path_to_entities dir, it
