@@ -15,12 +15,16 @@
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 
-require File.expand_path("../test_app/config/environment", __FILE__)
-
 require 'grapi'
 require 'pry'
+require 'grape'
+require 'grape_entity'
+
+require File.expand_path("../test_app/config/environment", __FILE__)
+
 require 'rails/all'
 require 'rspec/rails'
+
 require 'ammeter/init'
 
 RSpec.configure do |config|
@@ -29,7 +33,7 @@ RSpec.configure do |config|
     # Removes the tests directory used for generators testing
     FileUtils.rm_rf "/Users/jpamaya/code/codescrum/projects/grapi_all/grapi/tmp/tests"
   end
-  
+
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
   # assertions if you prefer.
