@@ -88,12 +88,12 @@ module Grapi
   # autoloads a default entity when presenting a given class instance
   ::Grape::Endpoint.send(:define_method, :present_with_autoload) do |instance, options = {}|
     is_instance_a_set = false
-    is_instance_a_set = true if instance.kind_of?(Array)
-    if defined? Mongoid
-      is_instance_a_set = true if instance.kind_of?(Mongoid::Criteria)
+    is_instance_a_set = if defined? Mongoid
+      instance.kind_of?(Mongoid::Criteria)
     elsif defined? ActiveRecord
-      is_instance_a_set = true if instance.kind_of?(ActiveRecord::Relation)
+      instance.kind_of?(ActiveRecord::Relation)
     end
+    is_instance_a_set ||= instance.kind_of?(Array)
     klass = is_instance_a_set ? instance.first.class : instance.class
     entity = Grapi.registered_entity_for klass
     options[:with] = entity.constantize if options[:with].nil? && entity
