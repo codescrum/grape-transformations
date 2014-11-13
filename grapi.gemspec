@@ -29,14 +29,13 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'ammeter'
   spec.add_development_dependency 'sqlite3'
   spec.add_development_dependency 'virtus'
+  spec.add_development_dependency 'railties'
+  spec.add_development_dependency 'rspec-rails'
+  spec.add_development_dependency 'activesupport'
+  spec.add_development_dependency 'pry-byebug'
 
-  spec.add_runtime_dependency 'railties'
-  spec.add_runtime_dependency 'rspec-rails'
-  spec.add_runtime_dependency 'activesupport'
-  spec.add_runtime_dependency 'pry-byebug'
-
-  spec.add_dependency 'grape', '0.8.0'
-  spec.add_dependency 'grape-entity', '0.4.2'
+  spec.add_runtime_dependency 'grape', '>= 0.7.0', '<= 0.9.0'
+  spec.add_runtime_dependency 'grape-entity', '~> 0.4.0'
   
   
 end
