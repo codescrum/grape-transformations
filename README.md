@@ -53,6 +53,12 @@ This will create the basic directory structure and initializer file for you to c
 
 TODO: Write usage instructions here
 
+## Contributors
+<ul>
+  <li><a href="https://github.com/johaned">Johan Tique</a></li>
+  <li><a href="https://github.com/gato_omega">Miguel Diaz</a></li>
+</ul>
+
 ## Contributing
 
 1. Fork it ( http://github.com/codescrum/grapi/fork )
