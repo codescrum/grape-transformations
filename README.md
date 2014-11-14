@@ -1,5 +1,8 @@
 # Grapi
 
+[![Code Climate](https://codeclimate.com/github/codescrum/grapi/badges/gpa.svg)](https://codeclimate.com/github/codescrum/grapi)
+[![Test Coverage](https://codeclimate.com/github/codescrum/grapi/badges/coverage.svg)](https://codeclimate.com/github/codescrum/grapi)
+
 Grapi is a gem that works with Rails and Grape to organize and make possible the use of multiple Grape entities per model, while at the same time, decoupling them from your models.
 
 ####Important!
