@@ -1,5 +1,6 @@
 require 'grapi/version'
 require 'grapi/loader'
+require 'grapi/transformations'
 require 'grapi/engine' if defined?(Rails)
 require 'grape'
 require 'rails'
@@ -63,10 +64,14 @@ module Grapi
 
   # @return [Array] all transformations listed as symbols (excludes :default)
   def self.transformations_for(klass)
+    simbolized_entities_for(klass) - [:default] 
+  end
+
+  def self.simbolized_entities_for(klass)
     class_name = normalized_class_name(klass)
     entities_directory = File.join(full_path_to_entities, class_name.pluralize.underscore)
     entity_files = Dir[File.join(entities_directory, '*')]
-    entity_files.map{|filename| File.split(filename).last.sub('.rb', '').to_sym} - [:default]
+    entity_files.map{|filename| File.split(filename).last.sub('.rb', '').to_sym}
   end
 
   # @return [Array] all entity classes including "Default" that relate to a given class

@@ -6,5 +6,8 @@ class User
   attribute :birthday, DateTime
   attribute :phone, Integer
   attribute :address, String
+
+  def self.all ; end
+  def self.find(id = nil) ; end
   
 end
