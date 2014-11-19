@@ -9,7 +9,7 @@ describe 'Animal Endpoint', :type => :request do
       describe '/foo' do
         before(:each){ allow(::Animal).to receive(:all) { [first_animal, second_animal] } }
         
-        it 'gets all users with default transformation' do
+        it 'gets all animals with default transformation' do
           expected_response = "[{\"name\":\"Cow\",\"description\":\"Are the most common type of large domesticated ungulates. They are a prominent modern member of the subfamily Bovinae\",\"phylum\":\"Chordata\",\"diet\":\"vegetarian\"},{\"name\":\"Capybara\",\"description\":\"is the largest rodent in the world. Its closest relatives are guinea pigs and rock cavies\",\"phylum\":\"Chordata\",\"diet\":\"vegetarian\"}]"      
           get '/api/v1/animals/foo'
           expect(response.status).to eq 200
@@ -21,7 +21,7 @@ describe 'Animal Endpoint', :type => :request do
       describe '/bar/:id' do
         before(:each){ allow(::Animal).to receive(:find) { first_animal } }
 
-        it 'gets specific user with default transformation' do
+        it 'gets specific animal with default transformation' do
           expected_response = "{\"name\":\"Cow\",\"description\":\"Are the most common type of large domesticated ungulates. They are a prominent modern member of the subfamily Bovinae\"}"
           get '/api/v1/animals/bar/0'
           expect(response.status).to eq 200
