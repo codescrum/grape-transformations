@@ -1,11 +1,9 @@
-require 'rails/generators/base'
-
 module Grape
   module Generators
     module Transformations
-      class EntityGenerator < Rails::Generators::Base
+      class EntityGenerator < ::Rails::Generators::Base
 
-        desc <<-DESC.strip_heredoc
+        desc <<-DESC
           Create inherited Grape::Entity entity in your app/api/.../entities folder. this 
           created entity will have related with grape-transformations naming conventions
 

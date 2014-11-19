@@ -1,5 +1,5 @@
 # Rails Engine
-
+require 'rails/engine'
 module Grape
   module Transformations
     class Engine < ::Rails::Engine

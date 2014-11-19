@@ -36,6 +36,7 @@ require 'grape_entity'
 require File.expand_path("../test_app/config/environment", __FILE__)
 
 require 'rails/all'
+
 require 'rspec/rails'
 require 'rspec/mocks'
 

@@ -1,6 +1,9 @@
 require 'grape/transformations/version'
 require 'grape/transformations/loader'
 require 'grape/transformations/base'
+require 'rails/generators'
+require 'grape/generators/transformations/entity_generator'
+require 'grape/generators/transformations/install_generator'
 require 'grape/transformations/engine' if defined?(Rails)
 require 'grape'
 require 'rails'

@@ -1,9 +1,7 @@
-require 'rails/generators/base'
-
 module Grape
   module Generators
     module Transformations
-      class InstallGenerator < Rails::Generators::Base
+      class InstallGenerator < ::Rails::Generators::Base
 
         source_root File.expand_path("../../templates", __FILE__)
 
