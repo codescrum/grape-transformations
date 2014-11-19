@@ -1,8 +1,8 @@
 require 'spec_helper'
 
-require 'generators/grapi/entity_generator'
+require 'grape/generators/transformations/entity_generator'
 
-describe Grapi::Generators::EntityGenerator, :type => :generator do
+describe Grape::Generators::Transformations::EntityGenerator, :type => :generator do
 
   destination File.expand_path('../../../tmp/tests', __FILE__)
 

@@ -1,8 +1,8 @@
 require 'spec_helper'
 
-require 'generators/grapi/install_generator'
+require 'grape/generators/transformations/install_generator'
 
-describe Grapi::Generators::InstallGenerator, :type => :generator do
+describe Grape::Generators::Transformations::InstallGenerator, :type => :generator do
 
   destination File.expand_path('../../../tmp/tests', __FILE__)
 
@@ -14,7 +14,7 @@ describe Grapi::Generators::InstallGenerator, :type => :generator do
 
     describe 'initializer' do
 
-      subject { file 'config/initializers/grapi.rb' }
+      subject { file 'config/initializers/grape-transformations.rb' }
 
       it { should exist }
 

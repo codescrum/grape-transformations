@@ -2,15 +2,15 @@ $:.push File.expand_path("../lib", __FILE__)
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'grapi/version'
+require 'grape/transformations/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "grapi"
-  spec.version       = Grapi::VERSION
+  spec.name          = "grape-transformations"
+  spec.version       = Grape::Transformations::VERSION
   spec.authors       = ["Johan Tique", "Miguel Diaz"]
   spec.email         = ["johan.tique@codescrum.com", "miguel.diaz@codescrum.com"]
-  spec.summary       = %q{Grapi decouples your entities from your models and also organizes and lets you use multiple entities per model }
-  spec.description   = %q{Grapi decouples your entities from your models and also organizes and lets you use multiple entities per model }
+  spec.summary       = %q{grape-transformations decouples your entities from your models and also organizes and lets you use multiple entities per model }
+  spec.description   = %q{grape-transformations your entities from your models and also organizes and lets you use multiple entities per model }
   spec.homepage      = "http://www.codescrum.com"
   spec.license       = "MIT"
 

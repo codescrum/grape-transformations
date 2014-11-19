@@ -1,27 +1,27 @@
-describe Grapi do
-  it 'verifies if Grapi is defined' do
-    expect(defined?(Grapi)).to_not be_nil
+describe Grape::Transformations do
+  it 'verifies if Grape::Transformations is defined' do
+    expect(defined?(Grape::Transformations)).to_not be_nil
   end
-  context 'when grapi conventions have been followed' do
-    describe 'grapi paths' do
+  context 'when grape-transformations conventions have been followed' do
+    describe 'grape-transformations paths' do
       it 'verifies the root api path' do
-        expected_response = 'grapi/spec/test_app/app/api'
-        root_api_path = Grapi.root_api_path
+        expected_response = 'grape-transformations/spec/test_app/app/api'
+        root_api_path = Grape::Transformations.root_api_path
         expect(root_api_path).to end_with expected_response
       end
       it 'verifies the relative path to entities' do
         expected_response = 'test_app/entities'
-        relative_path_to_entities = Grapi.relative_path_to_entities
+        relative_path_to_entities = Grape::Transformations.relative_path_to_entities
         expect(relative_path_to_entities).to match expected_response
       end
       it 'verifies the namespace related to entities' do
         expected_response = 'TestApp::Entities'
-        root_entity_namespace = Grapi.root_entity_namespace
+        root_entity_namespace = Grape::Transformations.root_entity_namespace
         expect(root_entity_namespace).to match expected_response
       end
       it 'verifies full path to entities' do
-        expected_response = 'grapi/spec/test_app/app/api/test_app/entities'
-        full_path_to_entities = Grapi.full_path_to_entities
+        expected_response = 'grape-transformations/spec/test_app/app/api/test_app/entities'
+        full_path_to_entities = Grape::Transformations.full_path_to_entities
         expect(full_path_to_entities).to end_with expected_response
       end
     end
@@ -31,50 +31,50 @@ describe Grapi do
           "Food" => "TestApp::Entities::Food",
           "User" => "TestApp::Entities::Users::Default"
         }
-        registered_entities = Grapi.registered_entities
+        registered_entities = Grape::Transformations.registered_entities
         expect(registered_entities).to match expected_response
       end
       describe 'User' do
         it 'verifies all entities' do
           expected_response = '[TestApp::Entities::Users::Compact, TestApp::Entities::Users::Default]'
-          all_entities_for_user = Grapi.all_entities_for(User).inspect
+          all_entities_for_user = Grape::Transformations.all_entities_for(User).inspect
           expect(all_entities_for_user).to match expected_response
         end
         it 'verifies entity for compact transformation' do
           expected_response = 'TestApp::Entities::Users::Compact'
-          entity_for_compact_transformation = Grapi.entity_for_transformation('User', 'Compact').inspect
+          entity_for_compact_transformation = Grape::Transformations.entity_for_transformation('User', 'Compact').inspect
           expect(entity_for_compact_transformation).to match expected_response
         end
         it 'verifies entity for default transformation' do
           expected_response = 'TestApp::Entities::Users::Default'
-          entity_for_compact_transformation = Grapi.entity_for_transformation('User', 'Default').inspect
+          entity_for_compact_transformation = Grape::Transformations.entity_for_transformation('User', 'Default').inspect
           expect(entity_for_compact_transformation).to match expected_response
         end
         it 'verifies all available entity transformations' do
           expected_response = '[TestApp::Entities::Users::Compact]'
-          all_available_entity_transformations = Grapi.all_transformation_entities_for('User').inspect
+          all_available_entity_transformations = Grape::Transformations.all_transformation_entities_for('User').inspect
           expect(all_available_entity_transformations).to match expected_response
         end
         it 'verifies the registered entities' do
           expected_response = 'TestApp::Entities::Users::Default'
-          registered_entity = Grapi.registered_entity_for 'User'
+          registered_entity = Grape::Transformations.registered_entity_for 'User'
           expect(registered_entity).to match expected_response
         end
         it 'verifies all available entity transformations' do
           expected_response = '[:compact]'
-          all_available_transformations = Grapi.transformations_for('User').inspect
+          all_available_transformations = Grape::Transformations.transformations_for('User').inspect
           expect(all_available_transformations).to match expected_response
         end
       end
       describe 'Food' do
         it 'verifies the registered entities' do
           expected_response = 'TestApp::Entities::Food'
-          registered_entity = Grapi.registered_entity_for 'Food'
+          registered_entity = Grape::Transformations.registered_entity_for 'Food'
           expect(registered_entity).to match expected_response
         end
         it 'verifies all available entity transformations' do
           expected_response = '[]'
-          all_available_transformations = Grapi.transformations_for('Food').inspect
+          all_available_transformations = Grape::Transformations.transformations_for('Food').inspect
           expect(all_available_transformations).to match expected_response
         end
       end
@@ -110,7 +110,7 @@ describe Grapi do
       end
     end
   end
-  context 'when grapi conventions have not been followed' do
+  context 'when grape-transformations conventions have not been followed' do
     describe 'Animal' do
       let(:animal) { Animal.new name: 'Cow', description: 'Are the most common type of large domesticated ungulates. They are a prominent modern member of the subfamily Bovinae', phylum: 'Chordata', diet: 'vegetarian' }
       let(:endpoint) { Grape::Endpoint.new({}, path: '/', method: 'get')}

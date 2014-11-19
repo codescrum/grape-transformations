@@ -1,7 +1,7 @@
 module TestApp
   module Modules
     class User < Grape::API
-      include Grapi::Transformations
+      include Grape::Transformations::Base
 
       target_model ::User
 

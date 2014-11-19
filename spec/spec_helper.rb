@@ -28,7 +28,7 @@ SimpleCov.start do
   add_filter '/spec/'
 end
 
-require 'grapi'
+require 'grape/transformations'
 require 'pry'
 require 'grape'
 require 'grape_entity'
@@ -45,7 +45,7 @@ RSpec.configure do |config|
 
   config.after(:suite) do
     # Removes the tests directory used for generators testing
-    FileUtils.rm_rf "/Users/jpamaya/code/codescrum/projects/grapi_all/grapi/tmp/tests"
+     File.join File.expand_path("../", __FILE__), "/tmp/tests"
   end
 
   config.include RSpec::Rails::RequestExampleGroup, type: :request, parent_example_group: { file_path: /spec\/api/ }
