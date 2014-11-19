@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["johan.tique@codescrum.com", "miguel.diaz@codescrum.com"]
   spec.summary       = %q{grape-transformations decouples your entities from your models and also organizes and lets you use multiple entities per model }
   spec.description   = %q{grape-transformations your entities from your models and also organizes and lets you use multiple entities per model }
-  spec.homepage      = "http://www.codescrum.com"
+  spec.homepage      = "https://github.com/codescrum/grape-transformations"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files`.split($/)
