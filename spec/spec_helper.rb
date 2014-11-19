@@ -37,6 +37,7 @@ require File.expand_path("../test_app/config/environment", __FILE__)
 
 require 'rails/all'
 require 'rspec/rails'
+require 'rspec/mocks'
 
 require 'ammeter/init'
 
@@ -46,6 +47,8 @@ RSpec.configure do |config|
     # Removes the tests directory used for generators testing
     FileUtils.rm_rf "/Users/jpamaya/code/codescrum/projects/grapi_all/grapi/tmp/tests"
   end
+
+  config.include RSpec::Rails::RequestExampleGroup, type: :request, parent_example_group: { file_path: /spec\/api/ }
 
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
