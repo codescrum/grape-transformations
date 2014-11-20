@@ -10,13 +10,30 @@ describe Grape::Generators::Transformations::EntityGenerator, :type => :generato
 
   context 'entity generating process' do
 
-    describe 'simple entity' do
+    describe 'default entity' do
 
-      before(:each){ run_generator %w(user) }
+      before(:each){ run_generator %w(user name:string email:string age:integer) }
 
       subject { file 'app/api/test_app/entities/users/default.rb' }
 
       it { should exist }
+      it { should contain /class Default < Grape::Entity/ }
+      it { should contain /expose :name, documentation: { type: 'string', desc: '', example: '' }/ }
+      it { should contain /expose :email, documentation: { type: 'string', desc: '', example: '' }/ }
+      it { should contain /expose :age, documentation: { type: 'integer', desc: '', example: '' }/ }
+
+    end
+
+    describe 'compact entity' do
+
+      before(:each){ run_generator %w(user:compact name:string email:string) }
+
+      subject { file 'app/api/test_app/entities/users/compact.rb' }
+
+      it { should exist }
+      it { should contain /class Compact < Grape::Entity/ }
+      it { should contain /expose :name, documentation: { type: 'string', desc: '', example: '' }/ }
+      it { should contain /expose :email, documentation: { type: 'string', desc: '', example: '' }/ }
 
     end
 
