@@ -45,7 +45,7 @@ Or install it yourself as:
 
 After the gem has been installed just do:
 
-    $ rails g grape-transformations:install
+    $ rails g grape:transformations:install
 
 This will create the basic directory structure and initializer file for you to configure to your needs.
 
