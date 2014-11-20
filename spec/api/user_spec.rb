@@ -6,7 +6,7 @@ describe 'User Endpoint', :type => :request do
     let(:second_user) { User.new name: 'Elva Lasso', age: 25, birthday: Date.parse('15-06-1989'), phone: '777-5555', address: 'Fake st. 1-25' }
 
     context 'GET' do
-      describe 'default transformation' do
+      describe 'All Users' do
         before(:each){ allow(::User).to receive(:all) { [first_user, second_user] } }
         describe '/' do
           it 'gets all users with default transformation' do
@@ -27,7 +27,7 @@ describe 'User Endpoint', :type => :request do
           end
         end
       end
-      describe 'compact transformation' do
+      describe 'User by ID' do
         before(:each){ allow(::User).to receive(:find) { first_user } }
         describe '/:id' do
           it 'gets specific user with default transformation' do
