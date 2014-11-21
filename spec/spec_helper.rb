@@ -46,7 +46,7 @@ RSpec.configure do |config|
 
   config.after(:suite) do
     # Removes the tests directory used for generators testing
-    File.join File.expand_path("../", __FILE__), "/tmp/tests"
+    FileUtils.rm_rf File.join File.expand_path("../", __FILE__), "/tmp/tests"
   end
 
   config.include RSpec::Rails::RequestExampleGroup, type: :request, parent_example_group: { file_path: /spec\/api/ }
