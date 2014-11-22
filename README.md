@@ -31,6 +31,7 @@ Secondly, you need to build another folder called “modules” and segregate th
 ![alt tag](https://raw.githubusercontent.com/Johaned/songbook/c33c4dc5a1bee6667595d4f8b0cbf4bd6520661c/app/assets/images/full%20folder%20structure.png)
 
 In the picture above, we have the User module which typically defines the endpoints associated with the User stack. In this same module you can define the smart endpoints associated to the User model by using the DSL methods defined by grape-transformations which are: **define_endpoints**, **define_non_transformable_endpoints** and **add_endpoints**. Refer to the **Usage** section to catch up with the syntax stuff.
+
 The grape-transformations' DSL allows you to write your traditional endpoint structure associated with single endpoint behavior and will take your original definitions and add the smart endpoints (endpoints related with the transformations) for you. Bear in mind that the [grape-entity](https://github.com/intridea/grape-entity) gem allows you create representations that can have attributes manipulated through blocks, which means that you can expose new attributes (e.g. virtual attributes, computed properties, and so on).
 
 
