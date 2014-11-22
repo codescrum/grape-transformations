@@ -183,7 +183,7 @@ In order to create your single endpoints you need to edit the endpoints definiti
       end
     end
 
-In the previous code, we have built four endpoints based on two initial original single endpoints, and we have defined these endpoints into version 1 in our API, this code also assume that User model provide us both "find" and "all" class methods. the created endpoints created are the following:
+In the previous code, we have built four endpoints based on two initial original single endpoints, and we have defined these endpoints into version 1 in our API, this code also assume that User model provide us both "find" and "all" class methods. the created endpoints are the following:
 
 ![alt tag](https://raw.githubusercontent.com/Johaned/songbook/c33c4dc5a1bee6667595d4f8b0cbf4bd6520661c/app/assets/images/endpoints.png)
 
@@ -202,8 +202,6 @@ Bear in mind that if you don’t want to use the smart endpoints feature you can
 If you want to see an online example you can access [here](https://songbook-webday.herokuapp.com/api_doc), source code is [here](https://github.com/Johaned/songbook)
 
 The example app integrates: rails, mongoid, grape, grape-entity, grape-swagger and grape-transformations to give your the ultimate solution in API building
-
-TODO: Write usage instructions here
 
 ## Contributors
 <ul>
