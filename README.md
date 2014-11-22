@@ -66,9 +66,11 @@ This will create both the basic directory structure and initializer file for you
 
 You need to build the entities associated with your endpoint, in this case we're going to build some entities related to the User model, User model has the following attributes:
 
-    class User
-      attr_accessor :name, :email, :age, :address
-    end
+```ruby
+class User
+  attr_accessor :name, :email, :age, :address
+end
+```
     
 as you can see you could use plain old ruby objects or use  or Mongoid models, grape-transformations is weakly dependent on the type of ORM/ODM you use and most probably this dependency will be completely removed in the future.
 
@@ -78,19 +80,21 @@ In order to start building our entities, we can help ourselves by generating it 
     
 at the end of this process you should have the following generated code
 
-    # app/api/<app_name>/entities/user/default.rb
-    module AppName
-      module Entities
-        module Users
-          class Default < Grape::Entity
-            expose :name, documentation: { type: "string", desc: "", example: "" }
-            expose :email, documentation: { type: "string", desc: "", example: "" }
-            expose :age, documentation: { type: "integer", desc: "", example: "" }
-            expose :address, documentation: { type: "string", desc: "", example: "" }
-          end
-        end
+```ruby
+# app/api/<app_name>/entities/user/default.rb
+module AppName
+  module Entities
+    module Users
+      class Default < Grape::Entity
+        expose :name, documentation: { type: "string", desc: "", example: "" }
+        expose :email, documentation: { type: "string", desc: "", example: "" }
+        expose :age, documentation: { type: "integer", desc: "", example: "" }
+        expose :address, documentation: { type: "string", desc: "", example: "" }
       end
     end
+  end
+end
+```
     
 this generator will create an entity as a default transformation using the conventions shown in the "What are Smart Endpoints?" section.
 
@@ -100,16 +104,18 @@ Similarly, you can create an entity that represents a specific transformation:
 
 once, again the following code is generated
 
-    module AppName
-      module Entities
-        module Users
-          class Compact < Grape::Entity
-            expose :name, documentation: { type: "string", desc: "", example: "" }
-            expose :email, documentation: { type: "string", desc: "", example: "" }
-          end
-        end
+```ruby
+module AppName
+  module Entities
+    module Users
+      class Compact < Grape::Entity
+        expose :name, documentation: { type: "string", desc: "", example: "" }
+        expose :email, documentation: { type: "string", desc: "", example: "" }
       end
     end
+  end
+end
+```
     
 As you can see, you can specify the name of your transformation through suffix in the first param (model name). You can create as many entities as you want.
 
@@ -119,69 +125,75 @@ Once you have created all entities that you need, you can now create an API modu
     
 at the end of this process you should have the following generated code:
 
-    module AppName
-      module Modules
-        class User < Grape::API
-          include Grape::Transformations::Base
-          target_model ::User
-          helpers do
-            # Write your helpers here
-          end
-          define_endpoints do |entity|
-            # Write your single endpoints here
-          end
-          resource :users do
-            add_endpoints
-          end
-        end
+```ruby
+module AppName
+  module Modules
+    class User < Grape::API
+      include Grape::Transformations::Base
+      target_model ::User
+      helpers do
+        # Write your helpers here
+      end
+      define_endpoints do |entity|
+        # Write your single endpoints here
+      end
+      resource :users do
+        add_endpoints
       end
     end
+  end
+end
+```
 
 Once you have defined both entities and modules, you need to mount the modules in your API core, following the grape conventions this file should be located into the "api" folder.
 
-    # app/api/api.rb
-    class API < Grape::API
-      prefix 'api'
-      mount AppName::Modules::User
-    end
+```ruby
+# app/api/api.rb
+class API < Grape::API
+  prefix 'api'
+  mount AppName::Modules::User
+end
+```
 
 In order to create your single endpoints you need to edit the endpoints definitions into the define_enpoints block that is located in each module that you have created. In our example, we are going to create a single endpoint to get all user and get a specific user by id (as a path param in our URL).
 
-    module AppName
-      module Modules
-        class User < Grape::API
-          include Grape::Transformations::Base
-          target_model ::User
-          helpers do
-            # Write your helpers here
-          end
-          define_endpoints do |entity|
-            desc 'returns all existent users', {
-              entity: entity
-            }
-            get '/' do
-              content_type "text/json"
-              present ::User.all, with: entity
-            end
-    
-            desc 'returns specific user by id', {
-              entity: entity
-            }
-            get '/:id' do
-              content_type "text/json"
-              user = ::User.find(params[:id])
-              present user, with: entity
-            end
-          end
-          
-          version :v1 do
-            resource :users do
-              add_endpoints
-            end
-          end
+```ruby
+module AppName
+  module Modules
+    class User < Grape::API
+      include Grape::Transformations::Base
+      target_model ::User
+      helpers do
+        # Write your helpers here
+      end
+      define_endpoints do |entity|
+        desc 'returns all existent users', {
+          entity: entity
+        }
+        get '/' do
+          content_type "text/json"
+          present ::User.all, with: entity
+        end
+
+        desc 'returns specific user by id', {
+          entity: entity
+        }
+        get '/:id' do
+          content_type "text/json"
+          user = ::User.find(params[:id])
+          present user, with: entity
+        end
+      end
+      
+      version :v1 do
+        resource :users do
+          add_endpoints
         end
       end
     end
+  end
+end
+```
 
 In the previous code, we have built four endpoints based on two initial original single endpoints, and we have defined these endpoints into version 1 in our API, this code also assume that User model provide us both "find" and "all" class methods. the created endpoints are the following:
 
@@ -189,15 +201,17 @@ In the previous code, we have built four endpoints based on two initial original
 
 Bear in mind that if you don’t want to use the smart endpoints feature you can write your endpoints as you always have using Grape. you can do that using the following DSL method into your module:
 
-    define_non_transformable_endpoints do
-      desc 'returns all existent foo into users', {
-        entity: YourEntity
-      }
-      get '/foo' do
-        content_type "text/json"
-        present ::Foo.all, with: YourEntity
-      end
-    end
+```ruby
+define_non_transformable_endpoints do
+  desc 'returns all existent foo into users', {
+    entity: YourEntity
+  }
+  get '/foo' do
+    content_type "text/json"
+    present ::Foo.all, with: YourEntity
+  end
+end
+```
 
 If you want to see an online example you can access [here](https://songbook-webday.herokuapp.com/api_doc), source code is [here](https://github.com/Johaned/songbook)
 
