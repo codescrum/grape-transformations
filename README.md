@@ -220,7 +220,7 @@ The example app integrates: rails, mongoid, grape, grape-entity, grape-swagger a
 ## Contributors
 <ul>
   <li><a href="https://github.com/johaned">Johan Tique</a></li>
-  <li><a href="https://github.com/gato_omega">Miguel Diaz</a></li>
+  <li><a href="https://github.com/gato-omega">Miguel Diaz</a></li>
 </ul>
 
 ## Contributing
